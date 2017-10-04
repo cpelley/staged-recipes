@@ -1,0 +1,43 @@
+{% set version = "2017.08.1" %}
+{% set sha256 = "29f7da52dcb616fd1c5b956b47df95d65f1004d8610fc7663779e42f8e143bb1" %}
+
+package:
+    name: um_utils
+    version: {{version}}
+
+source:
+    fn: um_utils-{{version}}.tar.gz
+    url: https://github.com/SciTools/um_utils/releases/download/{{version}}/um_utils-{{version}}.tar.gz
+    sha1: 4f1da3980bc6a7a08ab3dc2acc404ee51633fe7e
+
+build:
+    number: 1
+    skip: True # [py3k or win]
+    script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+    build:
+        - python
+        - numpy x.x
+        - setuptools
+        - mule
+    run:
+        - python
+        - numpy x.x
+        - mule
+
+test:
+    imports:
+        - um_utils
+
+about:
+    home: https://github.com/SciTools/um_utils
+    license: BSD-3
+    summary: UM file utilities based on Mule API
+    description: |
+        Utilities for the Met Office Unified Model files.
+
+extra:
+    recipe-maintainers:
+        - stevewardle
+        - cpelley
