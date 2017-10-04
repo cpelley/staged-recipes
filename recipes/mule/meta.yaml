@@ -7,8 +7,8 @@ package:
     version: {{version}}
 
 source:
-    fn: {{ name }}-{{version}}.tar.gz
-    url: https://github.com/SciTools/mule/releases/download/{{version}}/{{ name }}-{{ version }}.tar.gz
+    fn: {{ name }}-{{ version }}.tar.gz
+    url: https://github.com/SciTools/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
     sha256: {{ sha256 }}
 
 build:
