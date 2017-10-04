@@ -1,0 +1,44 @@
+{% set name = "mule" %}
+{% set version = "2017.08.1" %}
+{% set sha256 = "6199d8634849832bdb394f3013b74b70bed0f6f6ae421204b7a54703828ad146" %}
+
+package:
+    name: {{ name }}
+    version: {{version}}
+
+source:
+    fn: {{ name }}-{{version}}.tar.gz
+    url: https://github.com/SciTools/mule/releases/download/{{version}}/{{ name }}-{{ version }}.tar.gz
+    sha256: {{ sha256 }}
+
+build:
+    number: 1
+    skip: True # [py3k or win]
+    script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+    build:
+        - python
+        - numpy x.x
+        - setuptools
+        - um_packing
+    run:
+        - python
+        - numpy x.x
+        - um_packing
+
+test:
+    imports:
+        - mule
+
+about:
+    home: https://github.com/SciTools/mule
+    license: BSD-3
+    summary: Mule API for working with UM FieldsFiles and variants thereof
+    description: |
+        Mule, the Met Office Unified Model file manipulation toolset.
+
+extra:
+    recipe-maintainers:
+        - stevewardle
+        - cpelley
