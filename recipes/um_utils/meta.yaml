@@ -1,14 +1,15 @@
+{% set name = "um_utils" %}
 {% set version = "2017.08.1" %}
 {% set sha256 = "29f7da52dcb616fd1c5b956b47df95d65f1004d8610fc7663779e42f8e143bb1" %}
 
 package:
-    name: um_utils
-    version: {{version}}
+    name: {{ name }}
+    version: {{ version }}
 
 source:
-    fn: um_utils-{{version}}.tar.gz
-    url: https://github.com/SciTools/um_utils/releases/download/{{version}}/um_utils-{{version}}.tar.gz
-    sha1: 4f1da3980bc6a7a08ab3dc2acc404ee51633fe7e
+    fn: {{ name }}-{{ version }}.tar.gz
+    url: https://github.com/SciTools/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+    sha256: {{ sha256 }}
 
 build:
     number: 1
