@@ -1,0 +1,41 @@
+{% set name = "um_packing" %}
+{% set version = "2017.08.1" %}
+{% set sha256 = %}
+
+package:
+    name: {{ name }}
+    version: {{ version }}
+
+source:
+    fn: {{ name }}-{{ version }}.tar.gz
+    url: https://github.com/SciTools/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+    sha256: {{ sha256 }}
+
+build:
+    number: 2
+    skip: True # [py3k or win]
+    ignore_prefix_files:
+        - lib/python2.7/site-packages/{{ name }}/{{ name }}.so
+    binary_relocation: False
+
+requirements:
+    build:
+        - python
+        - numpy x.x
+        - setuptools
+    run:
+        - python
+        - numpy x.x
+
+test:
+    imports:
+        - um_packing
+
+about:
+    home: https://github.com/SciTools/um_packing
+    license: BSD-3
+    summary: Shumlib packing extension for use with Mule
+
+extra:
+    recipe-maintainers:
+        - stevewardle
